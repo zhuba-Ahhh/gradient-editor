@@ -1,0 +1,51 @@
+{
+  "name": "gradient-editor",
+  "version": "0.0.0",
+  "description": "",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc && vite build",
+    "commit": "commit",
+    "dev": "vite",
+    "format": "prettier --write --ignore-unknown .",
+    "lint:css": "stylelint **/*.css",
+    "lint:es": "eslint ./**/*.{ts,tsx}",
+    "serve": "vite preview"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pnpm lint\n pnpm format"
+    }
+  },
+  "dependencies": {
+    "@mybricks/color-picker": "^1.0.9",
+    "color": "^4.2.3",
+    "react": "^18.2.0",
+    "react-color": "^2.19.3",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/color": "^3.0.6",
+    "@types/node": "^18.11.18",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.13",
+    "husky": "^8.0.0",
+    "less": "^4.2.0",
+    "less-loader": "^12.2.0",
+    "postcss": "^8.4.21",
+    "prefer-code-style": "^2.1.5",
+    "react-test-renderer": "^18.2.0",
+    "rollup-plugin-visualizer": "^5.12.0",
+    "terser": "^5.30.4",
+    "typescript": "^5.1.6",
+    "vite": "^5.1.6",
+    "vite-plugin-cdn-import": "^1.0.0",
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-imagemin": "^0.6.1",
+    "vite-plugin-importer": "^0.2.5",
+    "vite-plugin-svgr": "4.2.0",
+    "vite-tsconfig-paths": "^4.0.3"
+  }
+}
