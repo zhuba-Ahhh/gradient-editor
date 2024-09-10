@@ -1,4 +1,3 @@
-# Vite + React + Tsx
+# React 渐变色编辑器 gradient-editor
 
-- antd
-- unocss
+- 滑动修改改渐变色
