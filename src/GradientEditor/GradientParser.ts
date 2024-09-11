@@ -1,4 +1,4 @@
-import gradient from 'gradient-parser';
+import gradient from './parser';
 import { GradientStop, GradientType } from './constants';
 import { uuid } from '../utils';
 
@@ -13,13 +13,13 @@ export const ParseGradient = (
   let direction = '90';
   let stops: GradientStop[] = [];
   if (gradientString && gradientString !== 'none') {
-    const gradientData = gradient.parse(gradientString)?.[0];
+    const gradientData = gradient(gradientString)?.[0];
     if (!!gradientData) {
       type = gradientData.type.split('-')[0] as GradientType;
       direction = Array.isArray(gradientData.orientation)
-        ? // @ts-ignore
-          gradientData.orientation[0]?.value
+        ? gradientData.orientation[0]?.value
         : gradientData.orientation?.value;
+      // @ts-ignore
       stops = gradientData.colorStops.map((colorStop) => ({
         color: `rgba(${(colorStop.value as string[]).join(',')})`,
         position: Number(colorStop.length?.value),

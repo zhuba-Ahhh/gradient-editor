@@ -1,11 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import GradientEditor from './GradientEditor';
 
 const App = () => {
-  const [defaultValue, setDefaultValue] = useState(
-    'radial-gradient(circle, rgb(250,84,28) 0%, rgb(54,207,201) 25%, rgb(255,255,255) 50%, rgb(235,47,150) 75%)'
-  );
-  const onChange = (value: string) => setDefaultValue(value);
+  const [defaultValue, setDefaultValue] = useState<string>('');
+  const onChange = (value: string) => {
+    setDefaultValue(value);
+    localStorage.setItem('gradient', value);
+  };
+
+  useEffect(() => {
+    localStorage.getItem('gradient');
+    setDefaultValue(
+      localStorage.getItem('gradient') ||
+        'radial-gradient(circle, rgb(250,84,28) 0%, rgb(54,207,201) 25%, rgb(255,255,255) 50%, rgb(235,47,150) 75%)'
+    );
+  }, []);
+
   return (
     <div
       style={{

@@ -4,7 +4,7 @@
   - [滑动条1](./src/GradientEditor/GradientPanel.tsx)
   - [滑动条2](./src/GradientEditor/PanelRender.tsx)
 - 使用`color-picker`或者输入框修改色标
-
+- [解析渐变色](./src/GradientEditor/parser.ts)
 
 ![img](./img1.png)
 ![img](./img2.png)
