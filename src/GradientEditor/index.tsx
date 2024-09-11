@@ -2,8 +2,6 @@ import { useState, useEffect, useCallback } from 'react';
 
 import { ColorEditor, InputNumber, Panel, Select } from '../components';
 
-import ColorUtil from 'color';
-
 import css from './index.module.less';
 import { AddButton, Angle, Circle, Ellipse, Linear, MinusButton, Radial } from './icon';
 import {
@@ -13,7 +11,8 @@ import {
   parseGradient,
   GradientEditorProps,
   shapeOptions,
-  gradientOptions
+  gradientOptions,
+  ParseGradient
 } from './constants';
 import { uuid } from '../utils';
 import GradientPanel from './GradientPanel';
@@ -27,7 +26,7 @@ export default function GradientEditor({ defaultValue, onChange }: GradientEdito
 
   useEffect(() => {
     if (defaultValue) {
-      const { type, direction, stops } = parseGradient(defaultValue);
+      const { type, direction, stops } = ParseGradient(defaultValue);
       setGradientType(type);
       if (type === 'linear' && direction) {
         setDeg(parseInt(direction));

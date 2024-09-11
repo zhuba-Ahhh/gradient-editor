@@ -1,6 +1,7 @@
 import { CSSProperties } from 'react';
 import ColorUtil from 'color';
 import { color2rgba, uuid } from '../utils';
+export * from './GradientParser';
 interface GradientEditorProps {
   defaultValue?: string;
   style?: CSSProperties;
