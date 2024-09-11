@@ -115,7 +115,6 @@ function parseGradient(gradientString: string): {
 function parseStops(stopsString: string): GradientStop[] {
   const stops = [];
   const colors = stopsString.split(', ');
-  console.log('[48;2;0;255;0m [ colors ]-118-「GradientEditor/constants.ts」 [0m', colors);
   let currentPercentage = 0;
 
   for (let i = 0; i < colors.length; i++) {

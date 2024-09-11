@@ -85,6 +85,7 @@ export function ColorEditor({ value, onChange, disabled, style }: ColorpickerPro
           onChange={(value) => {
             onChange(color2rgba(value));
           }}
+          style={{ padding: 0 }}
         />
       </div>
       {show &&

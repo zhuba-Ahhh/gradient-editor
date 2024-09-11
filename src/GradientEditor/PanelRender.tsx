@@ -118,7 +118,7 @@ const PanelRender = ({
   };
 
   return (
-    <div style={{ position: 'relative', left: '-12px' }}>
+    <div style={{ position: 'relative', left: '-14px' }}>
       {dragStartFlag && (
         <div className={css['overlay-when-drag']} onMouseMove={onMouseMove} onMouseUp={onMouseUp} />
       )}

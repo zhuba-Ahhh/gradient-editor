@@ -162,24 +162,22 @@ export default function GradientEditor({ defaultValue, onChange }: GradientEdito
             const { color, position, id } = stop;
             if (!color) return null;
             return (
-              <Panel.Content
-                key={id}
-                style={{ padding: '3px 0', display: 'flex', alignItems: 'center' }}
-              >
-                <ColorEditor
-                  value={color}
-                  style={{ flex: 3 }}
-                  onChange={(color) => {
-                    changeProperty('color', color, id);
-                    setCurElementId(id);
-                  }}
-                />
+              <div key={id} style={{ padding: '3px 0', display: 'flex', alignItems: 'center' }}>
+                <Panel.Item style={{ flex: 1 }}>
+                  <ColorEditor
+                    value={color}
+                    onChange={(color) => {
+                      changeProperty('color', color, id);
+                      setCurElementId(id);
+                    }}
+                  />
+                </Panel.Item>
                 <InputNumber
                   key={position}
                   tip="停靠位置"
                   // prefix={<PositionIcon />}
                   // prefixTip="位置"
-                  style={{ flex: 3 }}
+                  style={{ flex: 1 }}
                   type={'number'}
                   defaultUnitValue=""
                   defaultValue={position}
@@ -201,7 +199,7 @@ export default function GradientEditor({ defaultValue, onChange }: GradientEdito
                 >
                   <MinusButton />
                 </Panel.Item>
-              </Panel.Content>
+              </div>
             );
           })}
       </div>
