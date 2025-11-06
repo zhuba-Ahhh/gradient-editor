@@ -102,7 +102,7 @@ export default function GradientPanel({
   const onMouseUp = (event: React.MouseEvent<HTMLDivElement>) => {
     setDragStartFlag(false);
     setMoveMarkerEndTime(+new Date());
-    setCurElementId(null);
+    // setCurElementId(null);
     event.stopPropagation();
   };
 
@@ -131,7 +131,7 @@ export default function GradientPanel({
             <div
               key={`${id}-${index}`}
               style={{
-                left: `${position}%`,
+                left: `${position - 4.6875}%`,
                 zIndex: id === curElementId ? 20 : 1
               }}
               onMouseDown={(e) => onMouseDown(id, e)}

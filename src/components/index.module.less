@@ -86,6 +86,10 @@
     &:disabled {
       cursor: not-allowed;
     }
+
+    &:focus {
+      outline: none;
+    }
   }
 }
 
@@ -162,7 +166,7 @@
   line-height: 1;
   font-size: 12px;
   font-weight: 400;
-  padding: 0px 8px;
+  padding: 1px 9px;
   border-radius: 4px;
   background-color: rgb(239, 239, 239);
 
@@ -176,6 +180,7 @@
   }
 
   &.active {
+    padding: 0px 8px;
     border: 1px solid @color-primary;
   }
 }

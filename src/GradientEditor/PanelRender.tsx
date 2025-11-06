@@ -113,12 +113,12 @@ const PanelRender = ({
   const onMouseUp = (event: React.MouseEvent<HTMLDivElement>) => {
     setDragStartFlag(false);
     setMoveMarkerEndTime(+new Date());
-    setCurElementId(null);
+    // setCurElementId(null);
     event.stopPropagation();
   };
 
   return (
-    <div style={{ position: 'relative', left: '-14px' }}>
+    <div style={{ position: 'relative' }}>
       {dragStartFlag && (
         <div className={css['overlay-when-drag']} onMouseMove={onMouseMove} onMouseUp={onMouseUp} />
       )}
@@ -130,7 +130,7 @@ const PanelRender = ({
               key={`${id}-${index}`}
               className={`${css.stop} ${id === curElementId ? css.stopActive : ''}`}
               style={{
-                left: `${position}%`,
+                left: `${position - 4.6875}%`,
                 zIndex: id === curElementId ? 20 : 3
               }}
               onMouseDown={(e) => onMouseDown(id, e)}
