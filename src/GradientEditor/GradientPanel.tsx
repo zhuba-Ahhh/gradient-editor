@@ -2,6 +2,7 @@ import React, { useCallback, useRef, useState } from 'react';
 import { computePercentage, GradientStop, interpolateColor } from './constants';
 import { uuid } from '../utils';
 import css from './index.module.less';
+import { OFFSET } from './const';
 
 export default function GradientPanel({
   gradientColor,
@@ -131,7 +132,7 @@ export default function GradientPanel({
             <div
               key={`${id}-${index}`}
               style={{
-                left: `${position - 4.6875}%`,
+                left: `${position - OFFSET}%`,
                 zIndex: id === curElementId ? 20 : 1
               }}
               onMouseDown={(e) => onMouseDown(id, e)}

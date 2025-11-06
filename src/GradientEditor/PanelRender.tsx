@@ -3,6 +3,7 @@ import { useState, useCallback, useRef } from 'react';
 import { computePercentage, GradientStop, interpolateColor } from './constants';
 import React from 'react';
 import css from './index.module.less';
+import { OFFSET } from './const';
 
 const PanelRender = ({
   gradientColor,
@@ -130,7 +131,7 @@ const PanelRender = ({
               key={`${id}-${index}`}
               className={`${css.stop} ${id === curElementId ? css.stopActive : ''}`}
               style={{
-                left: `${position - 4.6875}%`,
+                left: `${position - OFFSET}%`,
                 zIndex: id === curElementId ? 20 : 3
               }}
               onMouseDown={(e) => onMouseDown(id, e)}
