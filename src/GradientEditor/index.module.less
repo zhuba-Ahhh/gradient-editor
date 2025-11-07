@@ -9,6 +9,15 @@
   cursor: crosshair;
 }
 
+.gradientEditor {
+  width: 320px;
+  padding: 12px 24px 12px 24px;
+  border-radius: 12px;
+  color: #000000e5;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px 0 #00000026, 0 10px 16px 0 #0000001f, 0 0 0.5px 0 #0000001f;
+}
+
 .previewTopBox {
   margin-top: 16px;
   position: relative;
@@ -16,11 +25,13 @@
   flex-direction: row;
   justify-content: space-between;
   cursor: crosshair;
+
   .stop {
     z-index: 3;
     position: absolute;
     bottom: 4px;
     cursor: move;
+
     .stopHandle {
       width: 24px;
       height: 24px;
@@ -40,11 +51,13 @@
         width: 16px;
       }
     }
+
     .active {
       border-color: #FA6400;
       z-index: 5;
     }
   }
+
   .stop::after {
     content: "";
     position: absolute;
@@ -56,9 +69,11 @@
     border-color: transparent;
     border-top-color: #e6e6e6;
   }
+
   .stopActive {
     z-index: 5;
   }
+
   .stopActive::after {
     border-top-color: #FA6400;
     z-index: 5;
@@ -80,22 +95,30 @@
       padding: 0 12px !important;
     }
   }
+
   svg {
     cursor: pointer;
   }
 }
 
 .stops {
-  max-height: 160px;
+  max-height: 280px;
   overflow-y: auto;
   overflow-x: hidden;
   padding-top: 3px;
 
+  // 隐藏滚动条
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   .disabled {
     opacity: 0.5;
+
     svg {
       cursor: not-allowed;
     }
+
     cursor: not-allowed;
   }
 
@@ -107,7 +130,7 @@
 .gradient-preview {
   height: 12px;
   margin-bottom: 20px;
-  background:white;
+  background: white;
 }
 
 .gradient-panel__angle {
@@ -166,7 +189,7 @@
   cursor: pointer;
 }
 
-.gradient-panel__presets__item:first-of-type{
+.gradient-panel__presets__item:first-of-type {
   margin-left: 15px;
 }
 

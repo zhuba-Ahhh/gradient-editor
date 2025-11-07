@@ -1,4 +1,4 @@
-import React, { ReactNode, CSSProperties, useState, useCallback, useEffect } from 'react';
+import React, { ReactNode, CSSProperties, useState, useCallback, useEffect, memo } from 'react';
 
 import { Panel } from './';
 
@@ -21,7 +21,7 @@ export interface InputProps {
   type?: string;
 }
 
-export function Input({
+const Input = memo(({
   defaultValue,
   onChange,
   value,
@@ -30,21 +30,23 @@ export function Input({
   suffix,
   style = {},
   disabled = false,
-  onFocus = () => {},
-  onKeyDown = () => {},
-  onBlur = () => {},
+  onFocus = () => { },
+  onKeyDown = () => { },
+  onBlur = () => { },
   tip,
   numberTip,
   type = void 0
-}: InputProps) {
+}: InputProps) => {
   const [inputValue, setInputValue] = useState(defaultValue);
 
   const handleInputChange = useCallback((event: { target: { value: any } }) => {
     const value = event.target.value;
 
-    setInputValue(value);
-    onChange?.(value);
-  }, []);
+    if (value !== inputValue) {
+      setInputValue(value);
+      onChange?.(value);
+    }
+  }, [inputValue, onChange]);
 
   useEffect(() => {
     if (value !== inputValue) {
@@ -75,4 +77,6 @@ export function Input({
       </div>
     </Panel.Item>
   );
-}
+})
+
+export { Input };

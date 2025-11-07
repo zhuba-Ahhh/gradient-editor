@@ -18,7 +18,7 @@ import { uuid } from '../utils';
 import GradientPanel from './GradientPanel';
 import PanelRender from './PanelRender';
 
-export default function GradientEditor({ defaultValue, onChange }: GradientEditorProps) {
+const GradientEditor = ({ defaultValue, onChange }: GradientEditorProps) => {
   const [gradientType, setGradientType] = useState<GradientType>('linear');
   const [shapeType, setShapeType] = useState<ShapeType>('ellipse');
   const [deg, setDeg] = useState(90);
@@ -26,7 +26,9 @@ export default function GradientEditor({ defaultValue, onChange }: GradientEdito
 
   useEffect(() => {
     if (defaultValue) {
-      const { type, direction, stops } = ParseGradient(defaultValue);
+      const parsedData = ParseGradient(defaultValue);
+      console.log(parsedData);
+      const { type, direction, stops } = parsedData;
       setGradientType(type);
       if (type === 'linear' && direction) {
         setDeg(parseInt(direction));
@@ -93,19 +95,19 @@ export default function GradientEditor({ defaultValue, onChange }: GradientEdito
   const changeProperty = useCallback(
     (property: string, value: any, id: string, isSort = false) => {
       setStops((prevStops) => {
-        const temp = prevStops.map((stop, i) =>
+        const temp = prevStops.map((stop) =>
           stop.id === id ? { ...stop, [property]: value } : stop
         );
         return isSort ? stopSort(temp) : temp;
       });
     },
-    [onChange, finalValue, stops]
+    [stopSort]
   );
 
   const [curElementId, setCurElementId] = useState<string | null>(null);
 
   return (
-    <div style={{ width: '320px', marginTop: 6 }}>
+    <div className={css.gradientEditor}>
       <GradientPanel
         gradientColor={finalValueRight}
         stops={stops}
@@ -205,3 +207,5 @@ export default function GradientEditor({ defaultValue, onChange }: GradientEdito
     </div>
   );
 }
+
+export default GradientEditor;
