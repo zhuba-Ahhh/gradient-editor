@@ -27,7 +27,6 @@ const GradientEditor = ({ defaultValue, onChange }: GradientEditorProps) => {
   useEffect(() => {
     if (defaultValue) {
       const parsedData = ParseGradient(defaultValue);
-      console.log(parsedData);
       const { type, direction, stops } = parsedData;
       setGradientType(type);
       if (type === 'linear' && direction) {
@@ -87,7 +86,7 @@ const GradientEditor = ({ defaultValue, onChange }: GradientEditorProps) => {
   const finalValueRight = generateGradientValue(90, 'linear', shapeType, stops);
 
   useEffect(() => {
-    if (finalValue) {
+    if (finalValue && finalValue !== defaultValue) {
       onChange?.(finalValue);
     }
   }, [finalValue, onChange]);

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useCallback, useState } from 'react';
 import GradientEditor from './GradientEditor';
 import { gradientPresets } from './const';
 import GradientDisplay from './components/GradientDisplay';
@@ -25,6 +25,10 @@ const App = () => {
     localStorage.setItem('gradient', css);
   };
 
+  const GradientEditorRender = useCallback(() => (
+    <GradientEditor defaultValue={defaultValue} onChange={onChange} />
+  ), [defaultValue, onChange]);
+
   return (
     <div className={styles.app}>
       <div className={styles.mainContainer}>
@@ -34,7 +38,7 @@ const App = () => {
             presets={gradientPresets}
             onPresetClick={handlePresetClick}
           />
-          <GradientEditor defaultValue={defaultValue} onChange={onChange} />
+          <GradientEditorRender />
         </div>
       </div>
     </div>
